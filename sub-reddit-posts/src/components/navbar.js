@@ -1,12 +1,23 @@
 import React from "react";
+import logo from '../imgs/reddit-logo.png';
+
 
 const Navbar = ({ activeCategory, handleCategoryChange }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light ">
       <div className="container">
-        <span className="navbar-brand">r/Flutter Dev</span>
+      <div>
+        <img
+              src={logo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top mx-2"
+              alt="Reddit logo"
+            />
+        </div>
+        <span className="navbar-brand">r/FlutterDev</span>
         <div className="navbar-collapse">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav mx-auto">
             <li
               className={`nav-item ${activeCategory === "hot" ? "active" : ""}`}
             >
