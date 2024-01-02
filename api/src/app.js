@@ -6,11 +6,19 @@ const redditRoutes = require('./routes/redditRoutes');
 
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 5000;
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000', 
+    methods: 'GET', 
+    credentials: true, 
+  })
+);
 
 app.use(express.json());
 
-app.use('/reddit', redditRoutes);
+app.use('/r/flutterDev', redditRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

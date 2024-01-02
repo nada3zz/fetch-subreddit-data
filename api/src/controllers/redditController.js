@@ -34,7 +34,8 @@ const fetchHot = async (req, res) => {
   try {
     const hotData = await fetchDataFromReddit("hot");
     await storeDataInFirestore("hot", hotData);
-    res.status(200).json({ posts: hotData });
+    const savedHotData = await getPostsFromFirestore('hot');
+    res.status(200).json({ posts: savedHotData });
   } catch (error) {
     console.error("Error fetching or storing hot data:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -45,7 +46,8 @@ const fetchNew = async (req, res) => {
   try {
     const newData = await fetchDataFromReddit("new");
     await storeDataInFirestore("new", newData);
-    res.status(200).json({ posts: newData });
+    const savedNewData = await getPostsFromFirestore('hot');
+    res.status(200).json({ posts: savedNewData });
   } catch (error) {
     console.error("Error fetching or storing new data:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -56,7 +58,8 @@ const fetchRising = async (req, res) => {
   try {
     const risingData = await fetchDataFromReddit("rising");
     await storeDataInFirestore("rising", risingData);
-    res.status(200).json({ posts: risingData });
+    const savedRisingData = await getPostsFromFirestore('hot');
+    res.status(200).json({ posts: savedRisingData });
   } catch (error) {
     console.error("Error fetching or storing rising data:", error);
     res.status(500).json({ error: "Internal server error" });
